@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be760e46-94c1-4ce0-b77c-9756ae6a9a85" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/trie/Indexes.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/trie/Indexes.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/trie/Trie.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/trie/Trie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/trie/TrieApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/trie/TrieApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/trie/TrieNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/trie/TrieNode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/trie/Trie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trie/Trie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/words0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/words0.txt" afterDir="false" />
     </list>
@@ -88,5 +84,32 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Trie" />
     </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/trie/Trie.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/trie/Trie.java</url>
+          <line>123</line>
+          <properties class="trie.Trie" method="print">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/trie/Trie.java</url>
+          <line>118</line>
+          <properties class="trie.Trie" method="print">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

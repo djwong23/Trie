@@ -23,36 +23,67 @@ public class Trie {
 	 */
 	public static TrieNode buildTrie(String[] allWords) {
 		TrieNode root = new TrieNode(null, null, null);
+		TrieNode ptr = root.firstChild;
+		TrieNode lastSib = null;
+		TrieNode parent = root;
 		Indexes in = new Indexes(0, (short) 0, (short) (allWords[0].length() - 1));
 		root.firstChild = new TrieNode(in, null, null);
 		if (allWords.length == 1)
 			return root;
 		for (short i = 1; i < allWords.length; i++) {
 			String ins = allWords[i];
-			TrieNode ptr = root.firstChild;
-			String word = allWords[ptr.substr.wordIndex].substring(ptr.substr.startIndex, ptr.substr.endIndex);
+			ptr = root.firstChild;
+			lastSib = null;
+			parent = root;
+			boolean makeChild = true;
 			short lastIndex = -1;
-			for (short j = 0; j < ins.length(); j++) {
-				if (word.charAt(j) == ins.charAt(j))
-					lastIndex = j;
-				else
-					break;
-			}
-			if (lastIndex != -1) {
-				ptr.substr.endIndex = (short) lastIndex;
-				ptr.firstChild = new TrieNode((new Indexes(ptr.substr.wordIndex, lastIndex, ptr.substr.endIndex)), null, null);
-				ptr.firstChild.sibling = new TrieNode((new Indexes(i, lastIndex, (short) (ins.length() - 1))), null, null);
-			} else {
-				while (ptr != null) {
-					if (ptr.sibling != null)
-						ptr = ptr.sibling;
-					else {
-						in = new Indexes(i, (short) 0, (short) (allWords[i].length() - 1));
-						ptr.sibling = new TrieNode(in, null, null);
-						ptr = root.firstChild;
+			while (ptr != null) {
+				String word = allWords[ptr.substr.wordIndex].substring(0, ptr.substr.endIndex + 1);
+				lastIndex = -1;
+				for (short j = 0; j < ins.length(); j++) {
+					if ((j < ins.length() && j < word.length()) && word.charAt(j) == ins.charAt(j))
+						lastIndex = (short) (j + 1);
+					else
 						break;
-					}
 				}
+				if (lastIndex != -1) {
+					parent = ptr;
+					ptr = ptr.firstChild;
+					continue;
+					/*ptr.firstChild = new TrieNode((new Indexes(ptr.substr.wordIndex, lastIndex, ptr.substr.endIndex)), null, null);
+					ptr.substr.endIndex = (short) (lastIndex-1);
+					ptr.firstChild.sibling = new TrieNode((new Indexes(i, lastIndex, (short) (ins.length() - 1))), null, null);
+					break;
+
+					 */
+				} else {
+					lastSib = ptr;
+					ptr = ptr.sibling;
+					/*while (ptr != null) {
+						if (ptr.sibling != null)
+							ptr = ptr.sibling;
+						else {
+							in = new Indexes(i, (short) 0, (short) (allWords[i].length() - 1));
+							ptr.sibling = new TrieNode(in, null, null);
+							ptr = root.firstChild;
+							break;
+						}
+					}
+
+					 */
+				}
+				if (ptr == null) {
+					in = new Indexes(i, (short) 0, (short) (allWords[i].length() - 1));
+					lastSib.sibling = new TrieNode(in, null, null);
+					ptr = root.firstChild;
+					makeChild = false;
+					break;
+				}
+			}
+			if (makeChild) {
+				parent.firstChild = new TrieNode((new Indexes(parent.substr.wordIndex, lastIndex, (short) (parent.substr.endIndex))), null, null);
+				parent.substr.endIndex = (short) (lastIndex - 1);
+				parent.firstChild.sibling = new TrieNode((new Indexes(i, lastIndex, (short) (ins.length() - 1))), null, null);
 			}
 		}
 		return root;
