@@ -1,8 +1,6 @@
-7
+5
 cat
 muscle
 pottery
 possible
 possum
-musk
-potato

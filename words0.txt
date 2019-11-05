@@ -1,4 +1,5 @@
-3
-door
-dorm
-doom
+4
+sell
+stock
+stop
+sock
