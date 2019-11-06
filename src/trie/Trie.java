@@ -23,7 +23,6 @@ public class Trie {
 		TrieNode ptr = root.firstChild;
 		TrieNode lastSib = null;
 		TrieNode parent = root;
-		TrieNode pParent = null;
 		Indexes in = new Indexes(0, (short) 0, (short) (allWords[0].length() - 1));
 		root.firstChild = new TrieNode(in, null, null);
 		if (allWords.length == 1)
@@ -37,7 +36,7 @@ public class Trie {
 			short lastIndex = -1;
 			short prevLastIndex = -1;
 			while (ptr != null) {
-				String word = allWords[ptr.substr.wordIndex].substring(0, ptr.substr.endIndex + 1);
+				String word = allWords[ptr.substr.wordIndex].substring(0, ptr.substr.endIndex + 1); /*
 				if (ptr.firstChild != null) {
 					if (!ins.substring(0, word.length()).equals(word)) {
 						lastIndex = -1;
@@ -47,12 +46,27 @@ public class Trie {
 							else
 								break;
 						}
-						parent.firstChild = new TrieNode((new Indexes(ptr.substr.wordIndex, ptr.substr.startIndex, (short) (lastIndex - 1))), ptr, null);
-						ptr.sibling = new TrieNode(new Indexes(i, lastIndex, (short) (ins.length() - 1)), null, null);
-						makeChild = false;
-						break;
+						if (lastIndex != -1 && lastIndex > prevLastIndex) {
+							parent = ptr;
+							parent.firstChild = new TrieNode((new Indexes(ptr.substr.wordIndex, ptr.substr.startIndex, (short) (lastIndex - 1))), ptr, null);
+							ptr.sibling = new TrieNode(new Indexes(i, lastIndex, (short) (ins.length() - 1)), null, null);
+							makeChild = false;
+							break;
+						}
+						else {
+							if (ptr.sibling != null) {
+								ptr = ptr.sibling;
+								continue;
+							}
+							else {
+								ptr.sibling = new TrieNode(new Indexes(i, (short)0, (short) (ins.length() - 1)), null, null);
+								makeChild = false;
+								break;
+							}
+
+						}
 					}
-				}
+				} */
 				lastIndex = -1;
 				for (short j = 0; j < ins.length(); j++) {
 					if ((j < ins.length() && j < word.length()) && word.charAt(j) == ins.charAt(j))
@@ -63,16 +77,12 @@ public class Trie {
 				if (lastIndex != -1 && lastIndex > prevLastIndex) {
 					boolean isRoot = parent == root;
 					parent = ptr;
-					pParent = parent;
-					if (ptr.firstChild != null || isRoot)
-						ptr = ptr.firstChild;
-					else
-						ptr = ptr.sibling;
+					ptr = ptr.firstChild;
+
 					prevLastIndex = lastIndex;
 					continue;
-				} else if (ptr.sibling != null && ptr.sibling.firstChild != null) {
-					parent = ptr.sibling;
-					ptr = parent.firstChild;
+				} else if (ptr.sibling != null) {
+					ptr = ptr.sibling;
 					prevLastIndex = lastIndex;
 					continue;
 				} else if (ptr.sibling != null) {
@@ -87,10 +97,6 @@ public class Trie {
 				else if (parent.sibling == null && ptr.sibling == null && prevLastIndex != -1) {
 					lastSib = parent;
 					ptr = null;
-				} else if (pParent != null) {
-					parent = pParent;
-					makeChild = true;
-					break;
 				} else {
 					lastSib = ptr;
 					ptr = ptr.sibling;
