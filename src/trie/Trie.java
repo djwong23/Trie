@@ -150,11 +150,26 @@ public class Trie {
 	 */
 	public static ArrayList<TrieNode> completionList(TrieNode root,
 													 String[] allWords, String prefix) {
-		/** COMPLETE THIS METHOD **/
+		TrieNode ptr = root.firstChild;
+		TrieNode parent = root;
+		ArrayList<TrieNode> out = new ArrayList<TrieNode>();
+		while (ptr != null) {
+			String word = allWords[ptr.substr.wordIndex].substring(0, ptr.substr.endIndex + 1);
+			if (word.equals(prefix.substring(0, word.length()))) {
+				parent = ptr;
+				ptr = ptr.firstChild;
 
-		// FOLLOWING LINE IS A PLACEHOLDER TO ENSURE COMPILATION
-		// MODIFY IT AS NEEDED FOR YOUR IMPLEMENTATION
-		return null;
+				while (ptr != null) {
+					out.add(ptr);
+					ptr = ptr.sibling;
+				}
+			}
+
+		}
+
+
+		return out;
+
 	}
 
 	public static void print(TrieNode root, String[] allWords) {

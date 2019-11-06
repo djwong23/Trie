@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="be760e46-94c1-4ce0-b77c-9756ae6a9a85" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/trie/Trie.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/trie/Trie.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/trie/Trie.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/trie/Trie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trie/Trie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/words0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/words0.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/words1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/words1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/words4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/words4.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -105,11 +104,11 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/trie/Trie.java</url>
-          <line>23</line>
-          <properties class="trie.Trie" method="buildTrie">
+          <line>150</line>
+          <properties class="trie.Trie" method="completionList">
             <option name="EMULATED" value="true" />
           </properties>
-          <option name="timeStamp" value="10" />
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
