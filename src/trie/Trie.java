@@ -1,5 +1,4 @@
 package trie;
-
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 /**
@@ -11,7 +10,6 @@ public class Trie {
 	// prevent instantiation
 	private Trie() {
 	}
-
 	/**
 	 * Builds a trie by inserting all words in the input array, one at a time,
 	 * in sequence FROM FIRST TO LAST. (The sequence is IMPORTANT!)
@@ -127,7 +125,6 @@ public class Trie {
 		}
 		return root;
 	}
-
 	/**
 	 * Given a trie, returns the "completion list" for a prefix, i.e. all the leaf nodes in the
 	 * trie whose words start with this prefix.
@@ -148,34 +145,54 @@ public class Trie {
 	 */
 	public static ArrayList<TrieNode> completionList(TrieNode root,
 													 String[] allWords, String prefix) {
+		String pref = prefix;
 		TrieNode ptr = root.firstChild;
 		TrieNode parent = root;
 		ArrayList<TrieNode> out = new ArrayList<TrieNode>();
+		short lastIndex, prevLastIndex = -1;
 		int count = 0;
 		while (ptr != null) {
 			String word = allWords[ptr.substr.wordIndex].substring(0, ptr.substr.endIndex + 1);
-			if (word.charAt(count) == prefix.charAt(0)) {
-
-				prefix = prefix.substring(1);
-				if (prefix.length() == 0) {
-					if (ptr != null)
-						add(ptr, out);
+			if (word.equals(pref)) {
+				if (ptr.firstChild != null) {
+					add(ptr.firstChild, out);
+				} else {
+					out.add(ptr);
+				}
+				break;
+			} else {
+				lastIndex = -1;
+				for (short j = 0; j < prefix.length(); j++) {
+					if ((j < prefix.length() && j < word.length()) && word.charAt(j) == prefix.charAt(j))
+						lastIndex = (short) (j + 1);
+					else
+						break;
+				}
+				if (lastIndex > prevLastIndex) {
+					parent = ptr;
+					ptr = ptr.firstChild;
+					prevLastIndex = lastIndex;
+				} else {
+					ptr = ptr.sibling;
+					continue;
+				}
+				if (lastIndex == prefix.length()) {
+					if (ptr != null) {
+						if (word.equals(pref))
+							add(ptr.firstChild, out);
+						else
+							add(ptr, out);
+					}
 					else
 						add(parent, out);
 					break;
 				}
-				parent = ptr;
-				if (ptr.firstChild != null)
-					ptr = ptr.firstChild;
 				count++;
 				continue;
 			}
-
-			ptr = ptr.sibling;
 		}
 		return out;
 	}
-
 	private static void add(TrieNode root, ArrayList<TrieNode> out) {
 		TrieNode ptr = root;
 		while (ptr != null) {
@@ -186,12 +203,10 @@ public class Trie {
 			ptr = ptr.sibling;
 		}
 	}
-
 	public static void print(TrieNode root, String[] allWords) {
 		System.out.println("\nTRIE\n");
 		print(root, 1, allWords);
 	}
-
 	private static void print(TrieNode root, int indent, String[] words) {
 		if (root == null) {
 			return;
