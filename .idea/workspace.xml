@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/trie/Trie.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/trie/Trie.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/trie/Trie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trie/Trie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/words0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/words0.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/words1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/words1.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -104,13 +103,26 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/trie/Trie.java</url>
-          <line>150</line>
+          <line>145</line>
           <properties class="trie.Trie" method="completionList">
             <option name="EMULATED" value="true" />
           </properties>
-          <option name="timeStamp" value="11" />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/trie/Trie.java</url>
+          <line>174</line>
+          <properties class="trie.Trie" method="add">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Trie$TrieApp.ic" NAME="TrieApp Coverage Results" MODIFIED="1573016051531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>trie.*</FILTER>
+    </SUITE>
   </component>
 </project>

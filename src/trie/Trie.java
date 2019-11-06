@@ -1,14 +1,13 @@
 package trie;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
-
 /**
  * This class implements a Trie.
  *
  * @author Sesh Venugopal
  */
 public class Trie {
-
 	// prevent instantiation
 	private Trie() {
 	}
@@ -56,7 +55,6 @@ public class Trie {
 						break;
 					}
 				}
-
 				lastIndex = -1;
 				for (short j = 0; j < ins.length(); j++) {
 					if ((j < ins.length() && j < word.length()) && word.charAt(j) == ins.charAt(j))
@@ -153,23 +151,40 @@ public class Trie {
 		TrieNode ptr = root.firstChild;
 		TrieNode parent = root;
 		ArrayList<TrieNode> out = new ArrayList<TrieNode>();
+		int count = 0;
 		while (ptr != null) {
 			String word = allWords[ptr.substr.wordIndex].substring(0, ptr.substr.endIndex + 1);
-			if (word.equals(prefix.substring(0, word.length()))) {
-				parent = ptr;
-				ptr = ptr.firstChild;
+			if (word.charAt(count) == prefix.charAt(0)) {
 
-				while (ptr != null) {
-					out.add(ptr);
-					ptr = ptr.sibling;
+				prefix = prefix.substring(1);
+				if (prefix.length() == 0) {
+					if (ptr != null)
+						add(ptr, out);
+					else
+						add(parent, out);
+					break;
 				}
+				parent = ptr;
+				if (ptr.firstChild != null)
+					ptr = ptr.firstChild;
+				count++;
+				continue;
 			}
 
+			ptr = ptr.sibling;
 		}
-
-
 		return out;
+	}
 
+	private static void add(TrieNode root, ArrayList<TrieNode> out) {
+		TrieNode ptr = root;
+		while (ptr != null) {
+			if (ptr.firstChild == null) {
+				out.add(ptr);
+			} else
+				add(ptr.firstChild, out);
+			ptr = ptr.sibling;
+		}
 	}
 
 	public static void print(TrieNode root, String[] allWords) {
@@ -184,13 +199,11 @@ public class Trie {
 		for (int i = 0; i < indent - 1; i++) {
 			System.out.print("    ");
 		}
-
 		if (root.substr != null) {
 			String pre = words[root.substr.wordIndex]
 					.substring(0, root.substr.endIndex + 1);
 			System.out.println("      " + pre);
 		}
-
 		for (int i = 0; i < indent - 1; i++) {
 			System.out.print("    ");
 		}
@@ -200,7 +213,6 @@ public class Trie {
 		} else {
 			System.out.println(root.substr);
 		}
-
 		for (TrieNode ptr = root.firstChild; ptr != null; ptr = ptr.sibling) {
 			for (int i = 0; i < indent - 1; i++) {
 				System.out.print("    ");
