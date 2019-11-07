@@ -1,5 +1,4 @@
-4
-door
-pore
-port
-doom
+3
+dog
+doe
+der

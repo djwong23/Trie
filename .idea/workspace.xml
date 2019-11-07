@@ -5,7 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/trie/Trie.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/trie/Trie.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/trie/Trie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trie/Trie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/words0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/words0.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/words1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/words1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/words2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/words2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/words3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/words3.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +120,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/trie/Trie.java</url>
-          <line>195</line>
+          <line>244</line>
           <properties class="trie.Trie">
             <option name="EMULATED" value="true" />
           </properties>
@@ -126,7 +128,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/trie/Trie.java</url>
-          <line>20</line>
+          <line>17</line>
           <properties class="trie.Trie" method="buildTrie">
             <option name="EMULATED" value="true" />
           </properties>

@@ -75,18 +75,31 @@ public class Trie {
 						break;
 				}
 				if (lastIndex != -1 && lastIndex > prevLastIndex) {
-					boolean isRoot = parent == root;
-					parent = ptr;
-					ptr = ptr.firstChild;
+					if (ptr.firstChild != null) {
+						if (lastIndex == word.length()) {
+							boolean isRoot = parent == root;
+							parent = ptr;
+							ptr = ptr.firstChild;
+						} else {
+							parent.firstChild = new TrieNode(new Indexes(ptr.substr.wordIndex, ptr.substr.startIndex, (short) (lastIndex - 1)), ptr, parent.sibling);
+							ptr.substr.startIndex = lastIndex;
+							while (ptr.sibling != null)
+								ptr = ptr.sibling;
+							ptr.sibling = new TrieNode(new Indexes(i, lastIndex, (short) (ins.length() - 1)), null, null);
+							makeChild = false;
+							break;
+						}
+					} else {
+						boolean isRoot = parent == root;
+						parent = ptr;
+						ptr = ptr.firstChild;
+					}
 
 					prevLastIndex = lastIndex;
 					continue;
 				} else if (ptr.sibling != null) {
 					ptr = ptr.sibling;
 					prevLastIndex = lastIndex;
-					continue;
-				} else if (ptr.sibling != null) {
-					ptr = ptr.sibling;
 					continue;
 				}
 					/*ptr.firstChild = new TrieNode((new Indexes(ptr.substr.wordIndex, lastIndex, ptr.substr.endIndex)), null, null);
@@ -197,6 +210,8 @@ public class Trie {
 				continue;
 			}
 		}
+		if (out.size() == 0)
+			return null;
 		return out;
 	}
 	private static void add(TrieNode root, ArrayList<TrieNode> out) {
