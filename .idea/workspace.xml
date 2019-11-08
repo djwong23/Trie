@@ -6,8 +6,6 @@
       <change beforePath="$PROJECT_DIR$/bin/trie/Trie.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/trie/Trie.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/trie/Trie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trie/Trie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/words1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/words1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/words2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/words2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/words3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/words3.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +87,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573020545678</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Updated buildTrie to properly make prefix less specific">
+      <created>1573154068956</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1573154068957</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -106,12 +111,14 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <ignored-roots>
       <path value="$PROJECT_DIR$/Trie" />
     </ignored-roots>
     <MESSAGE value="Added multilevel nodes" />
     <MESSAGE value="Working completionList" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working completionList" />
+    <MESSAGE value="Updated buildTrie to properly make prefix less specific" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated buildTrie to properly make prefix less specific" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -120,7 +127,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/trie/Trie.java</url>
-          <line>244</line>
+          <line>255</line>
           <properties class="trie.Trie">
             <option name="EMULATED" value="true" />
           </properties>
@@ -136,6 +143,12 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="parent.firstChild.sibling" language="JAVA" />
+        <watch expression="root" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Trie$TrieApp.ic" NAME="TrieApp Coverage Results" MODIFIED="1573016051531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

@@ -67,7 +67,7 @@ public class Trie {
 						}
 					}
 				} */
-				lastIndex = -1;
+				//lastIndex = -1;
 				for (short j = 0; j < ins.length(); j++) {
 					if ((j < ins.length() && j < word.length()) && word.charAt(j) == ins.charAt(j))
 						lastIndex = (short) (j + 1);
@@ -81,13 +81,22 @@ public class Trie {
 							parent = ptr;
 							ptr = ptr.firstChild;
 						} else {
-							parent.firstChild = new TrieNode(new Indexes(ptr.substr.wordIndex, ptr.substr.startIndex, (short) (lastIndex - 1)), ptr, parent.sibling);
+							ptr.substr.endIndex = (short) (lastIndex - 1);
+							ptr.firstChild = new TrieNode(new Indexes(ptr.substr.wordIndex, (short) (lastIndex), (short) (word.length() - 1)), ptr.firstChild, null);
+							ptr = ptr.firstChild;
+							ptr.sibling = new TrieNode(new Indexes(i, (short) (lastIndex), (short) (ins.length() - 1)), null, null);
+							makeChild = false;
+
+							break;
+							/*parent.firstChild = new TrieNode(new Indexes(ptr.substr.wordIndex, ptr.substr.startIndex, (short) (lastIndex - 1)), ptr, parent.sibling);
 							ptr.substr.startIndex = lastIndex;
 							while (ptr.sibling != null)
 								ptr = ptr.sibling;
 							ptr.sibling = new TrieNode(new Indexes(i, lastIndex, (short) (ins.length() - 1)), null, null);
 							makeChild = false;
 							break;
+
+							 */
 						}
 					} else {
 						boolean isRoot = parent == root;
@@ -108,7 +117,7 @@ public class Trie {
 					break;
 					 */
 				else if (parent.sibling == null && ptr.sibling == null && prevLastIndex != -1) {
-					lastSib = parent;
+					lastSib = ptr;
 					ptr = null;
 				} else {
 					lastSib = ptr;
